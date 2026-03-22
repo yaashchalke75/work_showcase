@@ -21,16 +21,16 @@ const works = [
   {
     title: "Zeux LifeSciences Portal",
     category: "E-Commerce · React.js",
-    year: "2025",
+    year: "2026",
     color: "#6c63ff",
     tags: ["React.js", "Tailwind CSS", "REST API"],
     size: "large",
     stat: "~35% faster load",
   },
   {
-    title: "React Native Mobile App",
+    title: "MyVyay FinTech App",
     category: "Mobile Development",
-    year: "2025",
+    year: "2026",
     color: "#00d4aa",
     tags: ["React Native", "Expo", "Redux"],
     size: "small",
@@ -39,7 +39,7 @@ const works = [
   {
     title: "RBAC Dashboard",
     category: "Admin Panel",
-    year: "2025",
+    year: "2026",
     color: "#ff6b6b",
     tags: ["React.js", "JWT", "MongoDB"],
     size: "small",
@@ -48,16 +48,16 @@ const works = [
   {
     title: "REST API Architecture",
     category: "Backend · Node.js",
-    year: "2025",
+    year: "2026",
     color: "#f59e0b",
     tags: ["Node.js", "Express", "Mongoose"],
     size: "large",
-    stat: "15+ endpoints",
+    stat: "30+ endpoints",
   },
   {
     title: "Component Library",
     category: "Open Source",
-    year: "2025",
+    year: "2026",
     color: "#818cf8",
     tags: ["React.js", "Tailwind CSS"],
     size: "small",
@@ -66,7 +66,7 @@ const works = [
   {
     title: "Performance Optimisation",
     category: "Web Perf",
-    year: "2025",
+    year: "2026",
     color: "#34d399",
     tags: ["Code Splitting", "Lazy Load"],
     size: "small",
@@ -97,6 +97,7 @@ function WorkCell({
         overflow: "hidden",
         position: "relative",
         cursor: "default",
+        minHeight: "160px",
         transition: "border-color .3s, box-shadow .3s",
       }}
       onMouseEnter={(e) => {
@@ -114,8 +115,10 @@ function WorkCell({
           position: "absolute",
           inset: 0,
           background: `linear-gradient(135deg,${w.color}10 0%,transparent 55%)`,
+          pointerEvents: "none",
         }}
       />
+
       {/* grid lines */}
       <svg
         style={{
@@ -124,11 +127,12 @@ function WorkCell({
           width: "100%",
           height: "100%",
           opacity: 0.25,
+          pointerEvents: "none",
         }}
       >
         {[20, 40, 60, 80].map((y) => (
           <line
-            key={y}
+            key={`h${y}`}
             x1="0"
             y1={`${y}%`}
             x2="100%"
@@ -139,7 +143,7 @@ function WorkCell({
         ))}
         {[20, 40, 60, 80].map((x) => (
           <line
-            key={x}
+            key={`v${x}`}
             x1={`${x}%`}
             y1="0"
             x2={`${x}%`}
@@ -149,17 +153,19 @@ function WorkCell({
           />
         ))}
       </svg>
-      {/* content */}
+
+      {/* content — position relative so cell height wraps it */}
       <div
         style={{
-          position: "absolute",
-          inset: 0,
+          position: "relative",
+          zIndex: 1,
           background:
-            "linear-gradient(to top,rgba(6,6,8,.92) 0%,rgba(6,6,8,.3) 55%,transparent 100%)",
+            "linear-gradient(to top,rgba(6,6,8,.92) 0%,rgba(6,6,8,.45) 60%,transparent 100%)",
           padding: "20px",
           display: "flex",
           flexDirection: "column",
           justifyContent: "flex-end",
+          minHeight: "160px",
         }}
       >
         <div style={{ marginBottom: "8px" }}>
@@ -185,6 +191,7 @@ function WorkCell({
             </span>
           ))}
         </div>
+
         <div
           style={{
             display: "flex",
@@ -331,21 +338,14 @@ export default function WorkShowcase() {
           </motion.a>
         </motion.div>
 
-        {/* Grid */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit,minmax(min(100%,260px),1fr))",
-            gridAutoRows: "clamp(140px,20vw,210px)",
-            gap: "14px",
-          }}
-        >
+        {/* Grid — className="work-grid" is targeted by CSS */}
+        <div className="work-grid">
           {works.map((w, i) => (
             <WorkCell key={w.title} w={w} i={i} inView={inView} />
           ))}
         </div>
 
-        {/* Education section */}
+        {/* Education */}
         <motion.div
           initial={{ opacity: 0, y: 22 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -421,37 +421,11 @@ export default function WorkShowcase() {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    ...H,
-                    fontWeight: 700,
                     fontSize: "14px",
-                    color: edu.color,
                   }}
                 >
                   🎓
                 </div>
-                {/* <h3
-                  style={{
-                    ...H,
-                    fontWeight: 700,
-                    fontSize: "clamp(14px,2vw,16px)",
-                    color: "var(--text)",
-                    marginBottom: "5px",
-                    letterSpacing: "-.02em",
-                  }}
-                >
-                  {edu.degree}
-                </h3>
-                <div
-                  style={{
-                    ...B,
-                    fontSize: "12px",
-                    color: "var(--dim)",
-                    marginBottom: "12px",
-                  }}
-                >
-                  {edu.period}
-                </div> */}
-
                 <h3
                   style={{
                     ...H,
@@ -486,7 +460,6 @@ export default function WorkShowcase() {
                 >
                   {edu.period}
                 </div>
-
                 <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
                   {edu.topics.map((t) => (
                     <span

@@ -6,9 +6,27 @@ export default function Cursor() {
   const [ring, setRing] = useState({ x: 0, y: 0 });
   const [isHover, setIsHover] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   useEffect(() => {
-    let ringX = 0, ringY = 0;
+    // Detect touch/mobile device — hide cursor entirely
+    const checkTouch = () => {
+      setIsTouchDevice(
+        window.matchMedia("(pointer: coarse)").matches ||
+          window.matchMedia("(max-width: 1024px)").matches ||
+          "ontouchstart" in window,
+      );
+    };
+    checkTouch();
+    window.addEventListener("resize", checkTouch);
+    return () => window.removeEventListener("resize", checkTouch);
+  }, []);
+
+  useEffect(() => {
+    if (isTouchDevice) return;
+
+    let ringX = 0,
+      ringY = 0;
     let animFrame: number;
 
     const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
@@ -40,12 +58,14 @@ export default function Cursor() {
       window.removeEventListener("mousemove", move);
       cancelAnimationFrame(animFrame);
     };
-  }, [pos.x, pos.y, isVisible]);
+  }, [pos.x, pos.y, isVisible, isTouchDevice]);
 
-  if (!isVisible) return null;
+  // Don't render anything on touch/mobile/tablet
+  if (isTouchDevice || !isVisible) return null;
 
   return (
     <>
+      {/* Dot */}
       <div
         style={{
           position: "fixed",
@@ -61,6 +81,7 @@ export default function Cursor() {
           transform: isHover ? "scale(2)" : "scale(1)",
         }}
       />
+      {/* Ring */}
       <div
         style={{
           position: "fixed",
@@ -72,8 +93,11 @@ export default function Cursor() {
           borderRadius: "50%",
           pointerEvents: "none",
           zIndex: 9998,
-          transition: "width 0.3s ease, height 0.3s ease, border-color 0.3s ease",
-          borderColor: isHover ? "rgba(108, 99, 255, 0.8)" : "rgba(108, 99, 255, 0.4)",
+          transition:
+            "width 0.3s ease, height 0.3s ease, border-color 0.3s ease",
+          borderColor: isHover
+            ? "rgba(108, 99, 255, 0.8)"
+            : "rgba(108, 99, 255, 0.4)",
         }}
       />
     </>
