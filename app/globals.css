@@ -1,0 +1,371 @@
+@import url("https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap");
+@import "tailwindcss";
+
+:root {
+  --bg: #060608;
+  --bg-card: #0c0c10;
+  --border: rgba(255, 255, 255, 0.07);
+  --text: #eeeef2;
+  --muted: rgba(238, 238, 242, 0.45);
+  --dim: rgba(238, 238, 242, 0.25);
+  --accent: #6c63ff;
+  --accent2: #ff6b6b;
+  --accent3: #00d4aa;
+  --font-head: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  cursor: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-head);
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+section {
+  scroll-margin-top: 80px;
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 2px;
+}
+::selection {
+  background: rgba(108, 99, 255, 0.3);
+  color: #fff;
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.grad {
+  background: linear-gradient(135deg, #a78bfa 0%, #6c63ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.grad-tri {
+  background: linear-gradient(135deg, #6c63ff 0%, #ff6b6b 50%, #00d4aa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% 200%;
+}
+
+.pill {
+  background: rgba(108, 99, 255, 0.08);
+  border: 1px solid rgba(108, 99, 255, 0.22);
+  border-radius: 8px;
+  padding: 5px 13px;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(238, 238, 242, 0.75);
+  font-family: var(--font-body);
+  white-space: nowrap;
+  transition: all 0.25s ease;
+  display: inline-block;
+}
+.pill:hover {
+  background: rgba(108, 99, 255, 0.16);
+  border-color: rgba(108, 99, 255, 0.5);
+  box-shadow: 0 0 16px rgba(108, 99, 255, 0.2);
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes gshift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+@keyframes glowPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 12px rgba(108, 99, 255, 0.25);
+  }
+  50% {
+    box-shadow:
+      0 0 28px rgba(108, 99, 255, 0.55),
+      0 0 60px rgba(108, 99, 255, 0.15);
+  }
+}
+@keyframes floatBadge {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(-1deg);
+  }
+  50% {
+    transform: translateY(-6px) rotate(1deg);
+  }
+}
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.anim-float {
+  animation: float 4s ease-in-out infinite;
+}
+.anim-marquee {
+  animation: marquee 28s linear infinite;
+}
+.anim-grad {
+  background-size: 200% 200%;
+  animation: gshift 4s ease infinite;
+}
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.06) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2.4s infinite;
+}
+.glow-pulse {
+  animation: glowPulse 2.8s ease-in-out infinite;
+}
+.float-badge {
+  animation: floatBadge 4s ease-in-out infinite;
+}
+.card-hover {
+  transition:
+    transform 0.28s ease,
+    box-shadow 0.28s ease,
+    border-color 0.28s ease;
+}
+.card-hover:hover {
+  transform: translateY(-5px);
+}
+
+/* ── Desktop nav helpers ── */
+.desk {
+  display: flex;
+}
+.mob {
+  display: none;
+}
+
+/* ── Hero always centered ── */
+#hero {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* ── Section inner wrapper ── */
+.section-inner {
+  max-width: 1160px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+/* ════════════════════════════
+   MOBILE — single breakpoint
+   ════════════════════════════ */
+@media (max-width: 767px) {
+  body {
+    cursor: auto;
+  }
+
+  /* Nav */
+  .desk {
+    display: none !important;
+  }
+  .mob {
+    display: flex !important;
+  }
+
+  /* All sections: centered, full width, no overflow */
+  section {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    overflow-x: hidden;
+  }
+
+  /* Every direct grid inside a section collapses to 1 column */
+  section > div > div[style*="grid"],
+  section > div > div > div[style*="grid"] {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  /* All content containers: full width, centered */
+  section > div {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* Hero stays centered */
+  #hero {
+    text-align: center !important;
+    align-items: center !important;
+  }
+
+  /* All headings left-aligned for readability on mobile (not centered) */
+  h1,
+  h2,
+  h3 {
+    text-align: left;
+  }
+
+  /* Hero headings stay centered */
+  #hero h1,
+  #hero h2,
+  #hero p {
+    text-align: center !important;
+  }
+
+  /* Fix any inline minmax grids that don't collapse */
+  [style*="minmax(min(100%"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Cards and content blocks: full width */
+  [style*="borderRadius"][style*="background"] {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Timeline: reduce left padding */
+  [style*="paddingLeft"] {
+    padding-left: 28px !important;
+  }
+
+  /* Stats grid stays 3-col on mobile (compact enough) */
+  [style*="repeat(3,1fr)"] {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+/* Extra small phones */
+@media (max-width: 390px) {
+  section {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  /* Stats grid: 1 column on very small */
+  [style*="repeat(3,1fr)"] {
+    grid-template-columns: 1fr !important;
+  }
+}
