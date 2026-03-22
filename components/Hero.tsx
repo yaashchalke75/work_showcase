@@ -1,19 +1,6 @@
 "use client";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  type Variants,
-  AnimatePresence,
-} from "framer-motion";
-import {
-  ArrowDown,
-  Github,
-  Linkedin,
-  Mail,
-  Download,
-  FileText,
-} from "lucide-react";
+import { motion, useScroll, useTransform, type Variants } from "framer-motion";
+import { ArrowDown, Github, Linkedin, Mail, FileText } from "lucide-react";
 import { personalInfo } from "@/lib/data";
 import { useRef, useState, useEffect } from "react";
 
@@ -30,7 +17,6 @@ const B: React.CSSProperties = {
   fontStyle: "normal",
 };
 
-/* Floating particle */
 function Particle({
   delay,
   x,
@@ -65,18 +51,12 @@ function Particle({
   );
 }
 
-/* Animated typewriter role switcher */
 function RoleBadge() {
   const roles = personalInfo.roles;
   const [idx, setIdx] = useState(0);
-  const [visible, setVisible] = useState(true);
   useEffect(() => {
     const t = setInterval(() => {
-      setVisible(false);
-      setTimeout(() => {
-        setIdx((i) => (i + 1) % roles.length);
-        setVisible(true);
-      }, 350);
+      setIdx((i) => (i + 1) % roles.length);
     }, 2400);
     return () => clearInterval(t);
   }, []);
@@ -126,6 +106,15 @@ export default function Hero() {
   const y = useTransform(scrollYProgress, [0, 1], [0, 90]);
   const opacity = useTransform(scrollYProgress, [0, 0.55], [1, 0]);
 
+  // Hide resume button on mobile & tablet
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth <= 1024);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
   const wrap: Variants = {
     hidden: { opacity: 0 },
     visible: {
@@ -163,7 +152,7 @@ export default function Hero() {
         padding: "100px 20px 60px",
       }}
     >
-      {/* ── Background layers ── */}
+      {/* Background */}
       <div
         style={{
           position: "absolute",
@@ -172,13 +161,11 @@ export default function Hero() {
           pointerEvents: "none",
         }}
       >
-        {/* Grid */}
         <div
           className="bg-grid"
           style={{ position: "absolute", inset: 0, opacity: 0.4 }}
         />
 
-        {/* Main glow */}
         <motion.div
           animate={{ scale: [1, 1.08, 1], opacity: [0.15, 0.22, 0.15] }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
@@ -194,7 +181,6 @@ export default function Hero() {
           }}
         />
 
-        {/* Secondary orbs */}
         <motion.div
           animate={{ x: [0, 20, 0], y: [0, -15, 0] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
@@ -208,6 +194,7 @@ export default function Hero() {
               "radial-gradient(ellipse,rgba(0,212,170,.07) 0%,transparent 70%)",
           }}
         />
+
         <motion.div
           animate={{ x: [0, -15, 0], y: [0, 20, 0] }}
           transition={{
@@ -227,12 +214,10 @@ export default function Hero() {
           }}
         />
 
-        {/* Floating particles */}
         {particles.map((p, i) => (
           <Particle key={i} {...p} />
         ))}
 
-        {/* Animated rings */}
         {[160, 240, 320].map((r, i) => (
           <motion.div
             key={r}
@@ -258,7 +243,7 @@ export default function Hero() {
         ))}
       </div>
 
-      {/* ── Content ── */}
+      {/* Content */}
       <motion.div
         style={{
           y,
@@ -345,7 +330,7 @@ export default function Hero() {
           </motion.h1>
         </motion.div>
 
-        {/* Gradient title */}
+        {/* Title */}
         <motion.div variants={item} style={{ marginBottom: "4px" }}>
           <h2
             className="grad-tri anim-grad"
@@ -418,6 +403,7 @@ export default function Hero() {
           >
             View My Work <ArrowDown size={14} />
           </motion.a>
+
           <motion.a
             href="#contact"
             whileHover={{ scale: 1.04, background: "rgba(255,255,255,.08)" }}
@@ -439,33 +425,36 @@ export default function Hero() {
           >
             Let's Talk
           </motion.a>
-          {/* Resume button */}
-          <motion.a
-            href={personalInfo.resumeUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{
-              scale: 1.04,
-              boxShadow: "0 6px 24px rgba(0,212,170,.25)",
-            }}
-            whileTap={{ scale: 0.96 }}
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "8px",
-              padding: "13px 22px",
-              background: "rgba(0,212,170,.08)",
-              border: "1px solid rgba(0,212,170,.3)",
-              color: "#00d4aa",
-              textDecoration: "none",
-              borderRadius: "12px",
-              ...B,
-              fontSize: "13px",
-              fontWeight: 600,
-            }}
-          >
-            <FileText size={14} /> Resume
-          </motion.a>
+
+          {/* Resume — only on desktop */}
+          {!isMobile && (
+            <motion.a
+              href={personalInfo.resumeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{
+                scale: 1.04,
+                boxShadow: "0 6px 24px rgba(0,212,170,.25)",
+              }}
+              whileTap={{ scale: 0.96 }}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "8px",
+                padding: "13px 22px",
+                background: "rgba(0,212,170,.08)",
+                border: "1px solid rgba(0,212,170,.3)",
+                color: "#00d4aa",
+                textDecoration: "none",
+                borderRadius: "12px",
+                ...B,
+                fontSize: "13px",
+                fontWeight: 600,
+              }}
+            >
+              <FileText size={14} /> Resume
+            </motion.a>
+          )}
         </motion.div>
 
         {/* Social row */}
