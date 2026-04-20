@@ -2,7 +2,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { projects } from "@/lib/data";
-import { Github, ArrowUpRight, TrendingUp, Globe, Smartphone } from "lucide-react";
+import { Github, ArrowUpRight, TrendingUp } from "lucide-react";
 
 const H: React.CSSProperties = { fontFamily:"var(--font-head)", fontSynthesis:"none", fontStretch:"normal", fontStyle:"normal" };
 const B: React.CSSProperties = { fontFamily:"var(--font-body)", fontSynthesis:"none", fontStretch:"normal", fontStyle:"normal" };
@@ -61,119 +61,139 @@ function EcommerceIllustration({ accent }: { accent: string }) {
   );
 }
 
-function FinTechIllustration({ accent }: { accent: string }) {
+function MediCareIllustration({ accent }: { accent: string }) {
   return (
     <svg viewBox="0 0 260 160" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-      {/* Phone frame */}
-      <rect x="80" y="8" width="100" height="144" rx="16" fill="rgba(255,255,255,.04)" stroke={accent} strokeWidth="1.2" strokeOpacity=".35"/>
-      <rect x="106" y="14" width="48" height="6" rx="3" fill="rgba(255,255,255,.1)"/>
-      {/* Screen */}
-      <rect x="86" y="26" width="88" height="118" rx="8" fill="rgba(255,255,255,.03)"/>
-      {/* Balance card */}
-      <rect x="92" y="32" width="76" height="36" rx="7" fill={`${accent}22`} stroke={accent} strokeWidth=".8" strokeOpacity=".4"/>
-      <text x="104" y="45" fill="rgba(255,255,255,.4)" fontSize="6" fontFamily="system-ui">Balance</text>
-      <text x="100" y="60" fill={accent} fontSize="10" fontWeight="700" fontFamily="system-ui">₹24,580</text>
-      {/* Transaction list */}
-      {[0,1,2,3].map(i=>(
-        <g key={i}>
-          <circle cx="100" cy={82+i*14} r="5" fill={`${accent}28`} stroke={accent} strokeWidth=".7" strokeOpacity=".4"/>
-          <rect x="110" y={77+i*14} width="32" height="5" rx="2" fill="rgba(255,255,255,.1)"/>
-          <rect x="110" y={84+i*14} width="20" height="4" rx="2" fill="rgba(255,255,255,.05)"/>
-          <rect x="146" y={79+i*14} width="14" height="8" rx="2" fill={i%2===0 ? "rgba(0,212,170,.2)" : "rgba(255,107,107,.15)"}/>
-        </g>
-      ))}
-      {/* Bottom nav */}
-      <rect x="86" y="130" width="88" height="14" rx="4" fill="rgba(255,255,255,.04)"/>
-      {[0,1,2,3].map(i=>(
-        <circle key={i} cx={98+i*22} cy={137} r="3"
-          fill={i===0 ? `${accent}80` : "rgba(255,255,255,.15)"}/>
-      ))}
-      {/* API connections — floating dots */}
-      {[[-28,20],[28,20],[-32,70],[32,70],[-26,120],[26,120]].map(([dx,dy],i)=>(
-        <g key={i}>
-          <motion.circle
-            cx={130+dx} cy={8+dy} r="3"
-            fill={accent} opacity=".45"
-            style={{
-              animationName:"none",
-            }}>
-            <animate attributeName="opacity" values=".2;.6;.2" dur={`${1.5+i*.3}s`} repeatCount="indefinite"/>
-          </motion.circle>
-          <line x1={130+dx} y1={8+dy} x2={80+(dx>0?88:0)} y2={8+dy}
-            stroke={accent} strokeWidth=".5" strokeOpacity=".18" strokeDasharray="3,3"/>
-        </g>
-      ))}
-      {/* 30+ API label */}
-      <rect x="16" y="68" width="48" height="20" rx="6" fill={`${accent}15`} stroke={accent} strokeWidth=".8" strokeOpacity=".35"/>
-      <text x="40" y="81" textAnchor="middle" fill={accent} fontSize="7" fontFamily="system-ui" fontWeight="600">30+ APIs</text>
-    </svg>
-  );
-}
-
-function APIIllustration({ accent }: { accent: string }) {
-  return (
-    <svg viewBox="0 0 260 160" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-      {/* Central node */}
-      <circle cx="130" cy="80" r="24" fill={`${accent}18`} stroke={accent} strokeWidth="1.5" strokeOpacity=".45"/>
-      <text x="130" y="85" textAnchor="middle" fill={accent} fontSize="11" fontFamily="system-ui" fontWeight="700">API</text>
-      {/* Satellite nodes */}
-      {[
-        [50,30,"GET"],  [210,30,"POST"],
-        [28,100,"PUT"], [232,100,"DEL"],
-        [80,145,"JWT"], [180,145,"DB"],
-      ].map(([cx,cy,label],i)=>(
-        <g key={i}>
-          <line x1={Number(cx)} y1={Number(cy)} x2="130" y2="80"
-            stroke={accent} strokeWidth=".8" strokeOpacity=".2" strokeDasharray="4,4"/>
-          <circle cx={Number(cx)} cy={Number(cy)} r="16"
-            fill={`${accent}12`} stroke={accent} strokeWidth="1" strokeOpacity=".3">
-            <animate attributeName="stroke-opacity" values=".15;.45;.15" dur={`${1.8+i*.25}s`} repeatCount="indefinite"/>
+      {/* Browser / dashboard frame */}
+      <rect x="16" y="10" width="228" height="140" rx="12" fill="rgba(255,255,255,.04)" stroke={accent} strokeWidth="1.2" strokeOpacity=".35"/>
+      <rect x="28" y="20" width="204" height="10" rx="3" fill="rgba(255,255,255,.06)"/>
+      <circle cx="36" cy="25" r="2.4" fill="#ff6b6b" opacity=".7"/>
+      <circle cx="44" cy="25" r="2.4" fill="#f59e0b" opacity=".7"/>
+      <circle cx="52" cy="25" r="2.4" fill={accent} opacity=".85"/>
+      {/* Medical cross badge */}
+      <circle cx="40" cy="56" r="16" fill={`${accent}22`} stroke={accent} strokeWidth="1.2" strokeOpacity=".55"/>
+      <rect x="37" y="47" width="6" height="18" rx="1.5" fill={accent}/>
+      <rect x="31" y="53" width="18" height="6" rx="1.5" fill={accent}/>
+      {/* Heartbeat line */}
+      <path d="M66 56 L80 56 L86 44 L94 68 L102 50 L110 60 L124 60"
+        stroke={accent} strokeWidth="1.6" fill="none" strokeLinecap="round" strokeLinejoin="round">
+        <animate attributeName="stroke-dasharray" values="0,200;200,0" dur="2.2s" repeatCount="indefinite"/>
+      </path>
+      {/* Calendar / appointment card */}
+      <rect x="132" y="40" width="96" height="52" rx="8" fill={`${accent}14`} stroke={accent} strokeWidth="1" strokeOpacity=".4"/>
+      <rect x="132" y="40" width="96" height="12" rx="8" fill={`${accent}30`}/>
+      <rect x="132" y="48" width="96" height="4" fill={`${accent}30`}/>
+      <text x="180" y="49" textAnchor="middle" fill="#fff" fontSize="7" fontFamily="system-ui" fontWeight="700" opacity=".9">APPOINTMENTS</text>
+      {/* Calendar dots */}
+      {[0,1,2,3,4,5,6].map(i=>{
+        const col=i%7; const row=Math.floor(i/7);
+        return (
+          <circle key={i} cx={142+col*13} cy={64+row*10} r="2.6"
+            fill={i===3 ? accent : `${accent}35`}>
+            {i===3 && <animate attributeName="r" values="2.6;3.6;2.6" dur="1.6s" repeatCount="indefinite"/>}
           </circle>
-          <text x={Number(cx)} y={Number(cy)+4} textAnchor="middle"
-            fill={accent} fontSize="7" fontFamily="system-ui" fontWeight="600" opacity=".8">{label}</text>
+        );
+      })}
+      {[7,8,9,10,11,12,13].map(i=>{
+        const col=(i-7)%7;
+        return (
+          <circle key={i} cx={142+col*13} cy={78} r="2.6" fill={`${accent}22`}/>
+        );
+      })}
+      {/* Patient rows (record list) — two rows only, leaves room for chips */}
+      {[0,1].map(i=>(
+        <g key={i}>
+          <rect x="28" y={96+i*13} width="200" height="10" rx="4" fill="rgba(255,255,255,.04)"/>
+          <circle cx="36" cy={101+i*13} r="3.2" fill={`${accent}55`}/>
+          <rect x="44" y={98+i*13} width="60" height="3" rx="1.5" fill="rgba(255,255,255,.18)"/>
+          <rect x="44" y={103+i*13} width="40" height="2.5" rx="1" fill="rgba(255,255,255,.08)"/>
+          <rect x="180" y={98+i*13} width="40" height="6" rx="2"
+            fill={i===0 ? `${accent}40` : "rgba(245,158,11,.28)"}/>
         </g>
       ))}
-      {/* Pulse ring */}
-      <circle cx="130" cy="80" r="36" stroke={accent} strokeWidth=".5" strokeOpacity=".15" fill="none">
-        <animate attributeName="r" values="28;44;28" dur="2.5s" repeatCount="indefinite"/>
-        <animate attributeName="stroke-opacity" values=".2;0;.2" dur="2.5s" repeatCount="indefinite"/>
-      </circle>
+      {/* Role badge chips — centered, well inside frame */}
+      <rect x="40"  y="128" width="52" height="14" rx="6" fill={`${accent}22`} stroke={accent} strokeWidth=".7" strokeOpacity=".55"/>
+      <text x="66"  y="137" textAnchor="middle" fill={accent} fontSize="7" fontFamily="system-ui" fontWeight="700" letterSpacing=".04em">PATIENT</text>
+      <rect x="104" y="128" width="52" height="14" rx="6" fill="rgba(245,158,11,.22)" stroke="#f59e0b" strokeWidth=".7" strokeOpacity=".55"/>
+      <text x="130" y="137" textAnchor="middle" fill="#f59e0b" fontSize="7" fontFamily="system-ui" fontWeight="700" letterSpacing=".04em">DOCTOR</text>
+      <rect x="168" y="128" width="52" height="14" rx="6" fill="rgba(108,99,255,.24)" stroke="#6c63ff" strokeWidth=".7" strokeOpacity=".55"/>
+      <text x="194" y="137" textAnchor="middle" fill="#8b82ff" fontSize="7" fontFamily="system-ui" fontWeight="700" letterSpacing=".04em">ADMIN</text>
     </svg>
   );
 }
 
-function ComponentIllustration({ accent }: { accent: string }) {
-  const items = [
-    {x:30, y:12, w:80, h:24, label:"Button"},
-    {x:120,y:12, w:110,h:24, label:"Input Field"},
-    {x:30, y:44, w:200,h:14, label:"Card Header"},
-    {x:30, y:62, w:200,h:34, label:"Data Table"},
-    {x:30, y:104,w:90, h:20, label:"Badge"},
-    {x:130,y:104,w:100,h:20, label:"Progress Bar"},
-    {x:30, y:132,w:60, h:16, label:"Tag"},
-    {x:100,y:132,w:60, h:16, label:"Tag"},
-    {x:170,y:132,w:60, h:16, label:"Tag"},
-  ];
+function MedCheckAIIllustration({ accent }: { accent: string }) {
   return (
     <svg viewBox="0 0 260 160" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-      {items.map((it,i)=>(
+      {/* Dashboard frame */}
+      <rect x="16" y="10" width="228" height="140" rx="12" fill="rgba(255,255,255,.04)" stroke={accent} strokeWidth="1.2" strokeOpacity=".35"/>
+      {/* AI brain node (left) */}
+      <circle cx="58" cy="60" r="24" fill={`${accent}18`} stroke={accent} strokeWidth="1.3" strokeOpacity=".55"/>
+      <path d="M50 54 Q50 48 56 48 Q58 44 62 46 Q68 45 68 52 Q72 54 70 60 Q72 66 66 68 Q62 72 58 68 Q52 70 50 64 Q46 60 50 54 Z"
+        fill="none" stroke={accent} strokeWidth="1.1" strokeOpacity=".85"/>
+      <circle cx="55" cy="56" r="1.4" fill={accent}/>
+      <circle cx="62" cy="58" r="1.4" fill={accent}/>
+      <circle cx="58" cy="64" r="1.4" fill={accent}/>
+      <line x1="55" y1="56" x2="62" y2="58" stroke={accent} strokeWidth=".6" opacity=".6"/>
+      <line x1="62" y1="58" x2="58" y2="64" stroke={accent} strokeWidth=".6" opacity=".6"/>
+      <line x1="55" y1="56" x2="58" y2="64" stroke={accent} strokeWidth=".6" opacity=".6"/>
+      <text x="58" y="92" textAnchor="middle" fill={accent} fontSize="7" fontFamily="system-ui" fontWeight="700" letterSpacing=".1em">AI ENGINE</text>
+      {/* Connecting pulse lines */}
+      <line x1="82" y1="60" x2="128" y2="48" stroke={accent} strokeWidth=".7" strokeOpacity=".35" strokeDasharray="3,3"/>
+      <line x1="82" y1="60" x2="128" y2="72" stroke={accent} strokeWidth=".7" strokeOpacity=".35" strokeDasharray="3,3"/>
+      <circle cx="105" cy="54" r="1.8" fill={accent}>
+        <animate attributeName="opacity" values=".3;1;.3" dur="1.8s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="105" cy="66" r="1.8" fill={accent}>
+        <animate attributeName="opacity" values="1;.3;1" dur="1.8s" repeatCount="indefinite"/>
+      </circle>
+      {/* Results panel (right) */}
+      <rect x="128" y="28" width="100" height="80" rx="8" fill={`${accent}10`} stroke={accent} strokeWidth="1" strokeOpacity=".4"/>
+      <text x="178" y="40" textAnchor="middle" fill={accent} fontSize="7" fontFamily="system-ui" fontWeight="700" letterSpacing=".08em">PREDICTIONS</text>
+      {/* Probability bars */}
+      {[
+        {label:"Migraine",  pct:88, color:accent,              y:48},
+        {label:"Tension",   pct:62, color:"#f59e0b",           y:64},
+        {label:"Sinusitis", pct:34, color:"#6c63ff",           y:80},
+        {label:"Flu",       pct:18, color:"rgba(255,255,255,.3)", y:96},
+      ].map((b,i)=>(
         <g key={i}>
-          <rect x={it.x} y={it.y} width={it.w} height={it.h} rx="5"
-            fill={`${accent}${i%3===0?"20":i%3===1?"14":"0a"}`}
-            stroke={accent} strokeWidth=".8" strokeOpacity={i%3===0?.35:.2}/>
-          <text x={it.x+it.w/2} y={it.y+it.h/2+3} textAnchor="middle"
-            fill={accent} fontSize="6.5" fontFamily="system-ui" opacity=".65">{it.label}</text>
+          <rect x="134" y={b.y} width="88" height="8" rx="3" fill="rgba(255,255,255,.06)"/>
+          <rect x="134" y={b.y} width={88*b.pct/100} height="8" rx="3" fill={b.color} opacity=".85">
+            <animate attributeName="width" from="0" to={88*b.pct/100} dur={`${1 + i*.2}s`} fill="freeze"/>
+          </rect>
+          <text x="138" y={b.y+6} fill="#fff" fontSize="5.5" fontFamily="system-ui" fontWeight="600" opacity=".9">{b.label}</text>
+          <text x="218" y={b.y+6} textAnchor="end" fill="#fff" fontSize="5.5" fontFamily="system-ui" fontWeight="700" opacity=".85">{b.pct}%</text>
         </g>
       ))}
+      {/* Symptom chips (bottom row) */}
+      <text x="28" y="122" fill="rgba(255,255,255,.45)" fontSize="6" fontFamily="system-ui" fontWeight="600" letterSpacing=".12em">SYMPTOMS</text>
+      {[
+        {x:28,  w:38, label:"Headache"},
+        {x:70,  w:30, label:"Fever"},
+        {x:104, w:32, label:"Nausea"},
+        {x:140, w:30, label:"Cough"},
+        {x:174, w:42, label:"Dizziness"},
+      ].map((s,i)=>(
+        <g key={i}>
+          <rect x={s.x} y="128" width={s.w} height="14" rx="7" fill={`${accent}1a`} stroke={accent} strokeWidth=".6" strokeOpacity=".5"/>
+          <text x={s.x+s.w/2} y="137" textAnchor="middle" fill="#fff" fontSize="6" fontFamily="system-ui" fontWeight="600" opacity=".85">{s.label}</text>
+        </g>
+      ))}
+      {/* Risk level badge (top-right corner of results) */}
+      <rect x="188" y="14" width="44" height="12" rx="6" fill="rgba(255,107,107,.22)" stroke="#ff6b6b" strokeWidth=".6" strokeOpacity=".55"/>
+      <circle cx="196" cy="20" r="1.8" fill="#ff6b6b">
+        <animate attributeName="opacity" values=".4;1;.4" dur="1.4s" repeatCount="indefinite"/>
+      </circle>
+      <text x="213" y="23" textAnchor="middle" fill="#ff6b6b" fontSize="6.5" fontFamily="system-ui" fontWeight="700" letterSpacing=".05em">HIGH RISK</text>
     </svg>
   );
 }
 
 const illustrations: Record<string, React.FC<{accent:string}>> = {
-  "Zeux LifeSciences":      EcommerceIllustration,
-  "MyVyay FinTech App":     FinTechIllustration,
-  "REST API Architecture":  APIIllustration,
-  "Reusable Component Library": ComponentIllustration,
+  "Zeux LifeSciences":              EcommerceIllustration,
+  "MediCare Health & Appointments": MediCareIllustration,
+  "MedCheck AI":                    MedCheckAIIllustration,
 };
 
 function FeaturedCard({ project, index }: { project: typeof projects[0]; index: number }) {
@@ -245,68 +265,39 @@ function FeaturedCard({ project, index }: { project: typeof projects[0]; index: 
           </div>
         </div>
 
-        <div style={{ display:"flex", gap:"14px" }}>
-          <a href={project.links.github}
-            style={{ display:"flex", alignItems:"center", gap:"6px",
-              color:"var(--muted)", ...B, fontSize:"13px", fontWeight:500,
-              textDecoration:"none", transition:"color .2s" }}
-            onMouseEnter={e=>(e.currentTarget.style.color="#fff")}
-            onMouseLeave={e=>(e.currentTarget.style.color="var(--muted)")}>
-            <Github size={14}/> Code
-          </a>
-          <a href={project.links.live}
-            style={{ display:"flex", alignItems:"center", gap:"6px",
-              color:project.accent, ...B, fontSize:"13px", fontWeight:500,
-              textDecoration:"none", transition:"opacity .2s" }}
-            onMouseEnter={e=>(e.currentTarget.style.opacity=".65")}
-            onMouseLeave={e=>(e.currentTarget.style.opacity="1")}>
-            <ArrowUpRight size={14}/> Live
-          </a>
+        <div style={{ display:"flex", gap:"14px", alignItems:"center" }}>
+          {project.links.github && project.links.github !== "#" && (
+            <a href={project.links.github} target="_blank" rel="noopener noreferrer"
+              style={{ display:"flex", alignItems:"center", gap:"6px",
+                color:"var(--muted)", ...B, fontSize:"13px", fontWeight:500,
+                textDecoration:"none", transition:"color .2s" }}
+              onMouseEnter={e=>(e.currentTarget.style.color="#fff")}
+              onMouseLeave={e=>(e.currentTarget.style.color="var(--muted)")}>
+              <Github size={14}/> Code
+            </a>
+          )}
+          {project.status ? (
+            <span style={{ display:"inline-flex", alignItems:"center", gap:"7px",
+              ...B, fontSize:"12px", fontWeight:600, letterSpacing:".04em",
+              padding:"5px 11px", borderRadius:"999px",
+              color:project.accent,
+              background:`${project.accent}18`,
+              border:`1px solid ${project.accent}40` }}>
+              <span style={{ width:6, height:6, borderRadius:"50%",
+                background:project.accent, boxShadow:`0 0 0 3px ${project.accent}22` }}/>
+              {project.status}
+            </span>
+          ) : (
+            <a href={project.links.live} target="_blank" rel="noopener noreferrer"
+              style={{ display:"flex", alignItems:"center", gap:"6px",
+                color:project.accent, ...B, fontSize:"13px", fontWeight:500,
+                textDecoration:"none", transition:"opacity .2s" }}
+              onMouseEnter={e=>(e.currentTarget.style.opacity=".65")}
+              onMouseLeave={e=>(e.currentTarget.style.opacity="1")}>
+              <ArrowUpRight size={14}/> View Project
+            </a>
+          )}
         </div>
-      </div>
-    </motion.div>
-  );
-}
-
-function SmallCard({ project, index }: { project: typeof projects[0]; index: number }) {
-  const [hov, setHov] = useState(false);
-  const ref = useRef(null);
-  const inView = useInView(ref, { once:true, margin:"-40px" });
-  const Illus = illustrations[project.title] || ComponentIllustration;
-
-  return (
-    <motion.div ref={ref}
-      initial={{ opacity:0, y:28 }} animate={inView?{opacity:1,y:0}:{}}
-      transition={{ duration:.55, delay:index*.09 }}
-      onMouseEnter={()=>setHov(true)} onMouseLeave={()=>setHov(false)}
-      style={{ borderRadius:"16px",
-        border:`1px solid ${hov?project.accent+"38":"rgba(255,255,255,.06)"}`,
-        background:"rgba(255,255,255,.02)", padding:"clamp(18px,3.5vw,24px)",
-        display:"flex", flexDirection:"column",
-        transition:"all .3s ease",
-        transform:hov?"translateY(-4px)":"translateY(0)",
-        boxShadow:hov?`0 12px 36px ${project.accent}12`:"none" }}>
-      <div style={{ height:100, marginBottom:"20px", borderRadius:"10px",
-        background:`linear-gradient(135deg,${project.accent}12 0%,transparent 100%)`,
-        display:"flex", alignItems:"center", justifyContent:"center", overflow:"hidden" }}>
-        <div style={{ width:"85%", maxWidth:180 }}><Illus accent={project.accent}/></div>
-      </div>
-      <div style={{ ...B, fontSize:"10px", color:project.accent, fontWeight:600,
-        letterSpacing:".14em", textTransform:"uppercase", marginBottom:"7px" }}>{project.category}</div>
-      <h3 style={{ ...H, fontWeight:700, fontSize:"clamp(15px,2.5vw,18px)",
-        color:"var(--text)", marginBottom:"10px", letterSpacing:"-.02em" }}>{project.title}</h3>
-      <p style={{ ...B, color:"var(--muted)", fontSize:"clamp(11px,1.6vw,13px)",
-        lineHeight:1.7, flex:1, marginBottom:"16px" }}>{project.description}</p>
-      <div style={{ display:"flex", flexWrap:"wrap", gap:"6px", marginBottom:"14px" }}>
-        {project.tech.slice(0,3).map(t=>(
-          <span key={t} style={{ ...B, fontSize:"10px", padding:"3px 9px",
-            background:"rgba(255,255,255,.04)", border:"1px solid rgba(255,255,255,.07)",
-            borderRadius:"6px", color:"var(--dim)" }}>{t}</span>
-        ))}
-      </div>
-      <div style={{ display:"flex", gap:"12px" }}>
-        <a href={project.links.github} style={{ color:"var(--dim)", display:"flex" }}><Github size={14}/></a>
-        <a href={project.links.live} style={{ color:project.accent, display:"flex" }}><ArrowUpRight size={14}/></a>
       </div>
     </motion.div>
   );
@@ -316,7 +307,6 @@ export default function Projects() {
   const ref = useRef(null);
   const inView = useInView(ref, { once:true, margin:"-60px" });
   const featured = projects.filter(p=>p.featured);
-  const rest     = projects.filter(p=>!p.featured);
 
   return (
     <section id="projects" ref={ref}
@@ -333,12 +323,8 @@ export default function Projects() {
             letterSpacing:"-.025em", color:"var(--text)" }}>Things I've built</h2>
         </motion.div>
 
-        <div style={{ display:"flex", flexDirection:"column", gap:"18px", marginBottom:"18px" }}>
+        <div style={{ display:"flex", flexDirection:"column", gap:"18px" }}>
           {featured.map((p,i)=><FeaturedCard key={p.id} project={p} index={i}/>)}
-        </div>
-        <div style={{ display:"grid",
-          gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,300px),1fr))", gap:"16px" }}>
-          {rest.map((p,i)=><SmallCard key={p.id} project={p} index={i}/>)}
         </div>
       </div>
     </section>
