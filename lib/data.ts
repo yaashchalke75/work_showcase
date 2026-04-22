@@ -87,6 +87,25 @@ export const projects = [
     ],
   },
   {
+    id: 4,
+    title:    "OpsFlow — DevOps Team Collaboration Platform",
+    category: "Full-Stack SaaS · DevOps",
+    description: "Production full-stack SaaS for DevOps teams — 10+ modules covering incidents, deployments, alerts, runbooks, analytics, and audit logs, with a safety-railed public demo mode for anonymous visitors.",
+    tech:     ["React","TypeScript","Node.js","Express","MongoDB Atlas","Vercel","Render"],
+    links:    {
+      github: "https://github.com/yaashchalke75/opsflow-devops-suite",
+      live:   "https://opsflow-devops-suite-5u1m.vercel.app/login",
+    },
+    featured: true,
+    accent:   "#f59e0b",
+    highlights: [
+      "Shipped 10+ modules — incidents, deployments, alerts, runbooks, analytics & audit logs",
+      "JWT auth with 6-role RBAC enforced at both API and UI layers",
+      "Safety-railed public demo mode for anonymous visitors to explore",
+      "CI/CD on Vercel + Render + MongoDB Atlas with responsive dark UI & command palette",
+    ],
+  },
+  {
     id: 2,
     title:    "MediCare Health & Appointments",
     category: "MERN · Healthcare",

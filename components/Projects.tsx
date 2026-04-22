@@ -61,6 +61,69 @@ function EcommerceIllustration({ accent }: { accent: string }) {
   );
 }
 
+function OpsFlowIllustration({ accent }: { accent: string }) {
+  return (
+    <svg viewBox="0 0 260 160" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+      {/* Dashboard frame */}
+      <rect x="16" y="10" width="228" height="140" rx="12" fill="rgba(255,255,255,.04)" stroke={accent} strokeWidth="1.2" strokeOpacity=".35"/>
+      {/* Top bar */}
+      <rect x="28" y="20" width="204" height="12" rx="3" fill="rgba(255,255,255,.06)"/>
+      <circle cx="36" cy="26" r="2.4" fill="#ff6b6b" opacity=".8"/>
+      <circle cx="44" cy="26" r="2.4" fill={accent} opacity=".85"/>
+      <circle cx="52" cy="26" r="2.4" fill="#00d4aa" opacity=".8"/>
+      <rect x="72" y="22" width="90" height="8" rx="2" fill="rgba(255,255,255,.08)"/>
+      {/* Command palette hint */}
+      <rect x="186" y="22" width="40" height="8" rx="2" fill={`${accent}25`} stroke={accent} strokeWidth=".6" strokeOpacity=".5"/>
+      <text x="206" y="28" textAnchor="middle" fill={accent} fontSize="6" fontFamily="system-ui" fontWeight="700" letterSpacing=".1em">⌘K</text>
+      {/* Sidebar */}
+      <rect x="24" y="38" width="44" height="104" rx="6" fill="rgba(255,255,255,.03)" stroke={accent} strokeWidth=".8" strokeOpacity=".25"/>
+      {[0,1,2,3,4].map(i=>(
+        <g key={i}>
+          <rect x="30" y={46+i*18} width="4" height="4" rx="1" fill={i===1 ? accent : `${accent}50`}/>
+          <rect x="38" y={46+i*18} width="24" height="4" rx="1" fill={i===1 ? "rgba(255,255,255,.6)" : "rgba(255,255,255,.2)"}/>
+        </g>
+      ))}
+      {/* Incident card */}
+      <rect x="76" y="38" width="72" height="46" rx="6" fill="rgba(255,107,107,.12)" stroke="#ff6b6b" strokeWidth=".8" strokeOpacity=".5"/>
+      <circle cx="84" cy="46" r="2.4" fill="#ff6b6b">
+        <animate attributeName="opacity" values=".4;1;.4" dur="1.4s" repeatCount="indefinite"/>
+      </circle>
+      <text x="92" y="49" fill="#ff6b6b" fontSize="6.5" fontFamily="system-ui" fontWeight="700" letterSpacing=".06em">INCIDENT</text>
+      <rect x="82" y="56" width="60" height="3" rx="1" fill="rgba(255,255,255,.5)"/>
+      <rect x="82" y="63" width="40" height="2.5" rx="1" fill="rgba(255,255,255,.25)"/>
+      <rect x="82" y="70" width="30" height="8" rx="3" fill="rgba(255,107,107,.3)"/>
+      <text x="97" y="76" textAnchor="middle" fill="#ff6b6b" fontSize="5.5" fontFamily="system-ui" fontWeight="700">P1</text>
+      {/* Deployment card */}
+      <rect x="156" y="38" width="72" height="46" rx="6" fill={`${accent}14`} stroke={accent} strokeWidth=".8" strokeOpacity=".5"/>
+      <circle cx="164" cy="46" r="2.4" fill={accent}/>
+      <text x="172" y="49" fill={accent} fontSize="6.5" fontFamily="system-ui" fontWeight="700" letterSpacing=".06em">DEPLOY</text>
+      <rect x="162" y="56" width="60" height="3" rx="1" fill="rgba(255,255,255,.5)"/>
+      <rect x="162" y="63" width="44" height="2.5" rx="1" fill="rgba(255,255,255,.25)"/>
+      {/* Progress bar */}
+      <rect x="162" y="72" width="60" height="4" rx="2" fill="rgba(255,255,255,.08)"/>
+      <rect x="162" y="72" width="42" height="4" rx="2" fill={accent} opacity=".85">
+        <animate attributeName="width" values="0;42;42" dur="2.4s" repeatCount="indefinite"/>
+      </rect>
+      {/* Analytics graph */}
+      <rect x="76" y="90" width="152" height="52" rx="6" fill="rgba(255,255,255,.03)" stroke={accent} strokeWidth=".8" strokeOpacity=".3"/>
+      <text x="82" y="100" fill={accent} fontSize="6" fontFamily="system-ui" fontWeight="700" letterSpacing=".1em">ANALYTICS</text>
+      <polyline points="82,132 98,124 114,128 130,116 146,120 162,108 178,112 194,100 210,106 222,96"
+        stroke={accent} strokeWidth="1.4" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+      <polyline points="82,132 98,124 114,128 130,116 146,120 162,108 178,112 194,100 210,106 222,96"
+        stroke={accent} strokeWidth="1.4" fill="none" strokeOpacity=".25">
+        <animate attributeName="stroke-dasharray" values="0,400;400,0" dur="2.8s" repeatCount="indefinite"/>
+      </polyline>
+      {/* Data points */}
+      {[[98,124],[130,116],[162,108],[194,100],[222,96]].map(([cx,cy],i)=>(
+        <circle key={i} cx={cx} cy={cy} r="1.8" fill={accent}/>
+      ))}
+      {/* RBAC role chips */}
+      <rect x="82" y="106" width="30" height="9" rx="4" fill={`${accent}22`} stroke={accent} strokeWidth=".5" strokeOpacity=".5"/>
+      <text x="97" y="112" textAnchor="middle" fill={accent} fontSize="5.5" fontFamily="system-ui" fontWeight="700" letterSpacing=".08em">ADMIN</text>
+    </svg>
+  );
+}
+
 function MediCareIllustration({ accent }: { accent: string }) {
   return (
     <svg viewBox="0 0 260 160" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
@@ -191,9 +254,10 @@ function MedCheckAIIllustration({ accent }: { accent: string }) {
 }
 
 const illustrations: Record<string, React.FC<{accent:string}>> = {
-  "Zeux LifeSciences":              EcommerceIllustration,
-  "MediCare Health & Appointments": MediCareIllustration,
-  "MedCheck AI":                    MedCheckAIIllustration,
+  "Zeux LifeSciences":                                EcommerceIllustration,
+  "OpsFlow — DevOps Team Collaboration Platform":     OpsFlowIllustration,
+  "MediCare Health & Appointments":                   MediCareIllustration,
+  "MedCheck AI":                                      MedCheckAIIllustration,
 };
 
 function FeaturedCard({ project, index }: { project: typeof projects[0]; index: number }) {
