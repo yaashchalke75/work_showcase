@@ -345,7 +345,7 @@ export default function About() {
                     marginBottom: "5px",
                   }}
                 >
-                  2
+                  4
                 </div>
                 <div
                   style={{
