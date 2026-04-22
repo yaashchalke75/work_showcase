@@ -310,7 +310,7 @@ export default function About() {
                     marginBottom: "5px",
                   }}
                 >
-                  30+
+                  72+
                 </div>
                 <div
                   style={{
