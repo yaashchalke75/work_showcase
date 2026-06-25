@@ -94,7 +94,7 @@ export const projects = [
     tech:     ["React","TypeScript","Node.js","Express","MongoDB Atlas","Vercel","Render"],
     links:    {
       github: "https://github.com/yaashchalke75/opsflow-devops-suite",
-      live:   "https://opsflow-devops-suite-5u1m.vercel.app/login",
+      live:   "https://opsflow-devops-suite-5u1m.vercel.app/",
     },
     featured: true,
     accent:   "#f59e0b",
