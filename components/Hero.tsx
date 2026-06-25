@@ -261,48 +261,6 @@ export default function Hero() {
         initial="hidden"
         animate="visible"
       >
-        {/* Status pill */}
-        <motion.div variants={item}>
-          <motion.span
-            whileHover={{ scale: 1.04 }}
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "8px",
-              background: "rgba(108,99,255,.1)",
-              border: "1px solid rgba(108,99,255,.3)",
-              borderRadius: "100px",
-              padding: "7px 18px",
-              marginBottom: "28px",
-              cursor: "default",
-            }}
-          >
-            <motion.span
-              animate={{ scale: [1, 1.4, 1] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              style={{
-                width: 7,
-                height: 7,
-                borderRadius: "50%",
-                background: "#00d4aa",
-                boxShadow: "0 0 10px #00d4aa",
-                flexShrink: 0,
-                display: "block",
-              }}
-            />
-            <span
-              style={{
-                ...B,
-                fontSize: "12px",
-                color: "rgba(238,238,242,.75)",
-                fontWeight: 500,
-              }}
-            >
-              {personalInfo.availability}
-            </span>
-          </motion.span>
-        </motion.div>
-
         {/* Name */}
         <motion.div variants={item} style={{ marginBottom: "4px" }}>
           <motion.h1
