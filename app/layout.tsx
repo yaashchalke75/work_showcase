@@ -14,12 +14,20 @@ export const metadata: Metadata = {
     description: "Building scalable web & mobile products.",
     siteName:    "Yash Chalke Portfolio",
   },
+  icons: {
+    icon: [
+      { url: "/icons/1password.svg", type: "image/svg+xml" },
+    ],
+    shortcut: "/icons/1password.svg",
+    apple: "/icons/1password.svg",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <link rel="icon" href="/icons/1password.svg" type="image/svg+xml" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
@@ -29,7 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body suppressHydrationWarning>
         {children}
-        <Analytics />
+        <Analytics debug={false} />
       </body>
     </html>
   );

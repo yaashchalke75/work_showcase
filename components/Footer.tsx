@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { personalInfo } from "@/lib/data";
 import { Github, Linkedin, Heart, Mail } from "lucide-react";
+import OnePasswordIcon from "@/components/icons/OnePasswordIcon";
 
 const H: React.CSSProperties = {
   fontFamily: "var(--font-head)",
@@ -53,25 +54,16 @@ export default function Footer() {
               textDecoration: "none",
               display: "flex",
               alignItems: "center",
-              gap: "8px",
+              gap: "10px",
             }}
           >
-            <span
+            <OnePasswordIcon
+              size={24}
               style={{
-                width: 26,
-                height: 26,
-                background: "linear-gradient(135deg,#6c63ff,#ff6b6b)",
-                borderRadius: "8px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: "12px",
-                fontWeight: 700,
-                color: "#fff",
+                filter: "drop-shadow(0 0 8px rgba(108,99,255,0.35))",
+                transition: "transform .25s ease, filter .25s ease",
               }}
-            >
-              Y
-            </span>
+            />
             Yash Chalke
           </a>
           <nav style={{ display: "flex", gap: "4px", flexWrap: "wrap" }}>

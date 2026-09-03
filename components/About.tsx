@@ -17,7 +17,7 @@ const B: React.CSSProperties = {
   fontStyle: "normal",
 };
 
-const CAREER_START = new Date("2026-01-01");
+const CAREER_START = new Date("2025-12-01");
 
 function useExperience() {
   const [label, setLabel] = useState("");
@@ -188,7 +188,7 @@ export default function About() {
                 { icon: Phone, text: personalInfo.phone },
                 {
                   icon: Code2,
-                  text: "Production experience · MyVyay Botmatic",
+                  text: "Junior Software Developer · PortalWiz Technologies",
                 },
               ].map(({ icon: Icon, text }) => (
                 <div
